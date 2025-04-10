@@ -1,0 +1,49 @@
+name: ZMK Firmware Build
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Set up Python for Zephyr dependencies
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: 3.x
+
+    # Install Zephyr dependencies
+    - name: Install dependencies
+      run: |
+        sudo apt update
+        sudo apt install -y cmake ninja-build gperf python3-pip python3-setuptools python3-tk python3-wheel xz-utils file make gcc gcc-multilib g++-multilib libsdl2-dev
+        pip3 install west
+
+    # Initialize Zephyr
+    - name: Initialize Zephyr
+      run: |
+        west init -l zmk/
+        west update
+        west zephyr-export
+        pip3 install -r zmk/app/requirements.txt
+
+    # Build ZMK firmware
+    - name: Build firmware
+      run: |
+        west build -d build/seeed_xiao_nrf52840 -b seeed_xiao_nrf52840 -- -DZMK_CONFIG=$(pwd)/config
+
+    # Upload firmware as artifact
+    - name: Upload firmware
+      uses: actions/upload-artifact@v3
+      with:
+        name: firmware
+        path: build/seeed_xiao_nrf52840/zephyr/zmk.uf2
