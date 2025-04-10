@@ -44,7 +44,7 @@ jobs:
 
     # Upload firmware as artifact
     - name: Upload firmware
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: firmware
         path: build/seeed_xiao_nrf52840/zephyr/zmk.uf2
