@@ -5,6 +5,7 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
+#include "2x3pad-layouts.dtsi"
 
 / {
     kscan0: kscan {
@@ -30,13 +31,6 @@
         display-name = "Default Layout";
         kscan = <&kscan0>;
         transform = <&default_transform>;
-        keys  //                     w   h    x    y     rot    rx    ry
-            = <&key_physical_attrs 100 100    0    0       0     0     0>
-            , <&key_physical_attrs 100 100  100    0       0     0     0>
-            , <&key_physical_attrs 100 100  200    0       0     0     0>
-            , <&key_physical_attrs 100 100    0  100       0     0     0>
-            , <&key_physical_attrs 100 100  100  100       0     0     0>
-            , <&key_physical_attrs 100 100  200  100       0     0     0>
-            ;
+        keys = <&2x3pad_physical_layout>;
     };
 };
