@@ -5,7 +5,7 @@
  */
 
 #include <dt-bindings/zmk/matrix_transform.h>
-#include "2x3pad-layouts.dtsi"
+#include <physical_layouts.dtsi>
 
 / {
     kscan0: kscan {
@@ -19,22 +19,27 @@
                     <&xiao_d 6 (GPIO_ACTIVE_HIGH)>;
     };
 
-    matrix-transform0: matrix-transform_0 {
+    default_transform: keymap_transform_0 {
         compatible = "zmk,matrix-transform";
         rows = <2>;
         columns = <3>;
         map = <RC(0,0) RC(0,1) RC(0,2) RC(1,0) RC(1,1) RC(1,2)>;
     };
 
-    physical_layout0: physical_layout_0 {
+    physical_layout0: physical_layout0 {
         compatible = "zmk,physical-layout";
-        display-name = "Default Layout";
+        display-name = "2x3pad";
 
-        keys = <&key_physical_attrs 100 100    0    0       0     0     0>,
-               <&key_physical_attrs 100 100  100    0       0     0     0>,
-               <&key_physical_attrs 100 100  200    0       0     0     0>,
-               <&key_physical_attrs 100 100    0  100       0     0     0>,
-               <&key_physical_attrs 100 100  100  100       0     0     0>,
-               <&key_physical_attrs 100 100  200  100       0     0     0>;
+        kscan = <&kscan0>;
+        transform = <&default_transform>;
+
+        keys  //                     w   h    x    y     rot    rx    ry
+            = <&key_physical_attrs 100 100    0    0       0     0     0>
+            , <&key_physical_attrs 100 100  100    0       0     0     0>
+            , <&key_physical_attrs 100 100  200    0       0     0     0>
+            , <&key_physical_attrs 100 100    0  100       0     0     0>
+            , <&key_physical_attrs 100 100  100  100       0     0     0>
+            , <&key_physical_attrs 100 100  200  100       0     0     0>
+            ;
     };
 };
