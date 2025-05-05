@@ -1,8 +1,8 @@
 #include <physical_layouts.dtsi>
 
 / {
-    physical_layout0: physical_layout_0 {
-        compatible = "zmk,physical-layout";
+    2x3pad_physical_layout: 2x3pad_physical_layout {
+        compatible = "zmk,2x3pad_physical-layout";
         display-name = "Default";
 
         kscan = <&kscan0>;
