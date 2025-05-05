@@ -2,8 +2,8 @@
 
 / {
     2x3pad_physical_layout: 2x3pad_physical_layout {
-        compatible = "zmk,2x3pad_physical-layout";
-        display-name = "Default";
+        compatible = "zmk,physical-layout";
+        display-name = "2x3pad";
 
         kscan = <&kscan0>;
         transform = <&matrix_transform0>;
