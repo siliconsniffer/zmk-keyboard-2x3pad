@@ -19,7 +19,7 @@
                     <&xiao_d 6 (GPIO_ACTIVE_HIGH)>;
     };
 
-    default_transform: keymap_transform_0 {
+    matrix-transform0: matrix-transform_0 {
         compatible = "zmk,matrix-transform";
         rows = <2>;
         columns = <3>;
@@ -29,8 +29,12 @@
     physical_layout0: physical_layout_0 {
         compatible = "zmk,physical-layout";
         display-name = "Default Layout";
-        kscan = <&kscan0>;
-        transform = <&default_transform>;
-        keys = <&2x3pad_physical_layout>;
+
+        keys = <&key_physical_attrs 100 100    0    0       0     0     0>,
+               <&key_physical_attrs 100 100  100    0       0     0     0>,
+               <&key_physical_attrs 100 100  200    0       0     0     0>,
+               <&key_physical_attrs 100 100    0  100       0     0     0>,
+               <&key_physical_attrs 100 100  100  100       0     0     0>,
+               <&key_physical_attrs 100 100  200  100       0     0     0>;
     };
 };

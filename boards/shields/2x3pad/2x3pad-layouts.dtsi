@@ -1,7 +1,7 @@
 #include <physical_layouts.dtsi>
 
 / {
-    2x3pad_physical_layout: 2x3pad_physical_layout {
+    physical_layout0: physical_layout0 {
         compatible = "zmk,physical-layout";
         display-name = "2x3pad";
 
